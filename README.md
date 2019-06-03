@@ -1,3 +1,10 @@
+# Change Point from Original
+
+**Available on iOS 8.0〜9.2 again**.
+⚠️ To be, revived `if #available()` description to use Swift 5 on old iOSes.
+
+That's all. Here are original README↓
+
 ![Eureka: Elegant form builder in Swift](Eureka.jpg)
 
 <p align="center">

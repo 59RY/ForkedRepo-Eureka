@@ -65,8 +65,11 @@ open class NavigationAccessoryView: UIToolbar, NavigationAccessory {
         var imageLeftChevron = UIImage(named: "back-chevron", in: bundle, compatibleWith: nil)
         var imageRightChevron = UIImage(named: "forward-chevron", in: bundle, compatibleWith: nil)
         // RTL language support
-        imageLeftChevron = imageLeftChevron?.imageFlippedForRightToLeftLayoutDirection()
-        imageRightChevron = imageRightChevron?.imageFlippedForRightToLeftLayoutDirection()
+		if #available(iOSApplicationExtension 9.0, *) {
+			imageLeftChevron = imageLeftChevron?.imageFlippedForRightToLeftLayoutDirection()
+			imageRightChevron = imageRightChevron?.imageFlippedForRightToLeftLayoutDirection()
+		}
+		
         
 
         previousButton = UIBarButtonItem(image: imageLeftChevron, style: .plain, target: self, action: #selector(didTapPrevious))

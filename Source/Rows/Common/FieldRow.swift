@@ -468,9 +468,11 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
 		var targetTitleWidth = bounds.size.width * titlePercentage
 		if let imageView = imageView, let _ = imageView.image, let titleLabel = titleLabel {
 			var extraWidthToSubtract = titleLabel.frame.minX - imageView.frame.minX // Left-to-right interface layout
-            if UIView.userInterfaceLayoutDirection(for: self.semanticContentAttribute) == .rightToLeft {
-                extraWidthToSubtract = imageView.frame.maxX - titleLabel.frame.maxX
-            }
+			if #available(iOSApplicationExtension 9.0, *) {
+				if UIView.userInterfaceLayoutDirection(for: self.semanticContentAttribute) == .rightToLeft {
+					extraWidthToSubtract = imageView.frame.maxX - titleLabel.frame.maxX
+				}
+			}
 			targetTitleWidth -= extraWidthToSubtract
 		}
 		calculatedTitlePercentage = targetTitleWidth / contentView.bounds.size.width
